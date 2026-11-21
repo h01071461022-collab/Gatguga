@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://h01071461022-collab.github.io/gatguga/sitemap.xml
+Sitemap: https://h01071461022-collab.github.io/Gatguga/sitemap.xml
