@@ -79,29 +79,25 @@ function sceneSVG(kind, W, H, x0, cls) {
   return `<svg class="${cls || ""}" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${scene(kind, W, H, x0)}</svg>`;
 }
 
-/* 사진 파일(images/banner-1.jpg, images/set-fold.jpg 같은 이름)이 있으면 그 사진을,
-   없으면(지금처럼) 코드로 그린 그림을 보여줘요. 사진은 나중에 images 폴더에 넣기만 하면 돼요. */
-function usePhotoOrScene(url, onPhoto, onScene) {
-  const img = new Image();
-  img.onload = onPhoto;
-  img.onerror = onScene;
-  img.src = url;
-}
+/* 사진 파일 이름이 data.js의 SCENE_PHOTOS에 적혀 있으면 그 사진을,
+   비어 있으면 코드로 그린 그림을 보여줘요. (파일이 있나 찔러 보지 않아서 콘솔에 404가 안 떠요) */
 
 // 배너 그림
 document.querySelectorAll(".slide").forEach((sl, i) => {
-  const url = `images/banner-${i + 1}.jpg`;
-  usePhotoOrScene(url,
-    () => sl.insertAdjacentHTML("afterbegin", `<img class="scene" src="${url}" alt="">` + '<div class="shade"></div>'),
-    () => sl.insertAdjacentHTML("afterbegin", sceneSVG(sl.dataset.scene, 1600, 640, 820, "scene") + '<div class="shade"></div>')
-  );
+  const file = SCENE_PHOTOS.banner[i];
+  if (file) {
+    sl.insertAdjacentHTML("afterbegin", `<img class="scene" src="images/${file}" alt="">` + '<div class="shade"></div>');
+  } else {
+    sl.insertAdjacentHTML("afterbegin", sceneSVG(sl.dataset.scene, 1600, 640, 820, "scene") + '<div class="shade"></div>');
+  }
 });
 // 세트 카드 그림
 document.querySelectorAll(".set-card").forEach(card => {
   const kind = card.dataset.scene;
-  const url = `images/set-${kind}.jpg`;
-  usePhotoOrScene(url,
-    () => card.insertAdjacentHTML("afterbegin", `<img src="${url}" alt="">`),
-    () => card.insertAdjacentHTML("afterbegin", sceneSVG(kind, 400, 300, 60))
-  );
+  const file = SCENE_PHOTOS.sets[kind];
+  if (file) {
+    card.insertAdjacentHTML("afterbegin", `<img src="images/${file}" alt="">`);
+  } else {
+    card.insertAdjacentHTML("afterbegin", sceneSVG(kind, 400, 300, 60));
+  }
 });

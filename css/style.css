@@ -195,8 +195,8 @@ footer summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 /* ================= 홈 (쇼핑몰형 첫 화면) ================= */
 .topnav { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid var(--line); }
 .topnav-in { max-width: 1200px; margin: 0 auto; height: 64px; padding: 0 20px; display: flex; align-items: center; gap: 28px; }
-.brand { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); text-decoration: none; cursor: pointer; }
-.brand span { color: var(--accent); }
+.brand { display: flex; align-items: center; text-decoration: none; cursor: pointer; }
+.brand-logo { height: 36px; width: auto; display: block; }
 .menu { display: flex; gap: 22px; flex: 1; }
 .menu a { color: var(--ink); text-decoration: none; font-size: .95rem; cursor: pointer; }
 .menu a:hover { color: var(--accent); }

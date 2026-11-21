@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://h01071461022-collab.github.io/gatguga/sitemap.xml
