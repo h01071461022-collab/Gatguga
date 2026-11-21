@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>갖구가 | 첫 자취방 가구, 검증된 것만</title>
 <meta name="description" content="방 크기, 예산, 생활 방식, 이사 계획을 고르면 내 원룸에 맞는 검증된 가구와 예산 배분을 알려 드려요.">
+<!-- 카톡 등에 링크를 보냈을 때 제목·설명이 뜨게 하는 정보. 공유 이미지는 4단계(공개)에서 사이트 주소가 생기면 추가 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="갖구가 | 첫 자취방 가구, 검증된 것만">
+<meta property="og:description" content="질문 4개면 내 방에 맞는 검증된 가구 세트와 예산 배분이 나와요.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -106,6 +110,7 @@
         <label><input type="radio" name="size" value="l"><span>7평 이상</span></label>
         <label><input type="radio" name="size" value="unknown"><span>잘 모르겠어요</span></label>
       </div>
+      <p class="hint" id="sizeHint" hidden>보통 원룸은 5~6평이에요.</p>
     </div>
 
     <div class="question">
@@ -132,6 +137,12 @@
         <label><input type="radio" name="move" value="soon"><span>1년 안에 이사할 수도</span></label>
         <label><input type="radio" name="move" value="stay"><span>2년 이상 살 거예요</span></label>
       </div>
+    </div>
+
+    <div class="step-nav" id="stepNav" hidden>
+      <button type="button" class="btn ghost" id="stepPrev">이전</button>
+      <span class="step-count" id="stepCount"></span>
+      <button type="button" class="btn" id="stepNext">다음</button>
     </div>
 
     <p class="form-msg" id="formMsg" aria-live="polite"></p>

@@ -43,9 +43,21 @@ function picksFor(category, a) {
     .sort((x, y) => y.s - x.s);
 }
 
+function dateText(iso) {
+  if (!iso) return "";
+  const [, m, d] = iso.split("-").map(Number);
+  return `${m}월 ${d}일`;
+}
+
 function priceText(p) {
-  if (p.priceMin == null) return "가격 조사 중";
-  return p.priceMin === p.priceMax ? `약 ${p.priceMin}만 원` : `${p.priceMin}~${p.priceMax}만 원`;
+  if (p.price == null) return "가격 조사 중";
+  const note = p.priceNote ? ` · ${p.priceNote}` : "";
+  return `${p.price.toLocaleString("ko-KR")}원${note}`;
+}
+
+function priceMetaText(p) {
+  if (p.price == null) return "";
+  return `${dateText(p.checkedAt)} 기준 · 실제 가격은 쿠팡에서 확인`;
 }
 
 function slotHTML(cat, a, total) {
@@ -64,7 +76,7 @@ function slotHTML(cat, a, total) {
   }
 
   const [best, ...rest] = list;
-  const over = best.priceMin != null && best.priceMin > alloc;
+  const over = best.price != null && best.price > alloc * 10000;
   const tags = [
     best.folding ? '<span class="tag ok">접이식</span>' : "",
     best.easyMove ? '<span class="tag ok">이사 쉬움</span>' : "",
@@ -76,19 +88,25 @@ function slotHTML(cat, a, total) {
       <div>
         <div class="role">${p.role} 대안</div>
         <div class="name">${p.name}</div>
-        <div class="why">${priceText(p)} · ${p.why}</div>
+        <div class="why">${priceText(p)}${p.price != null ? ` <span class="price-note">· ${priceMetaText(p)}</span>` : ""}</div>
+        <div class="why">${p.why}</div>
       </div>
       <a href="${p.link || "#"}" class="${p.link ? "" : "disabled"}" target="_blank" rel="sponsored noopener">${p.link ? "보기" : "준비 중"}</a>
     </div>`).join("");
 
+  const thumb = best.image
+    ? `<img class="thumb" src="${best.image}" alt="${best.name}">`
+    : `<div class="thumb">사진</div>`;
+
   return `<div class="slot">${head}
     <div class="pick">
       <div class="pick-top">
-        <div class="thumb">사진</div>
+        ${thumb}
         <div>
           <span class="badge">나에게 가장 맞음</span>
           <h4>${best.name}</h4>
           <div class="price">${priceText(best)}${over ? ` · <span class="price-warn">배정 예산보다 조금 높아요</span>` : ""}</div>
+          ${best.price != null ? `<div class="price-note">${priceMetaText(best)}</div>` : ""}
         </div>
       </div>
       <p class="because"><b>${becauseOf(best, a)}</b> 골랐어요. ${best.why}</p>
@@ -150,6 +168,8 @@ function showQuiz() {
   $("result").classList.remove("show");
   document.body.classList.remove("has-result");
   form.style.display = "block";
+  quizStep = 0;
+  renderQuizStep();
   $("find").scrollIntoView();
 }
 
@@ -170,6 +190,7 @@ function refreshForm() {
     label.classList.toggle("selected", input.checked);
   });
   const a = currentAnswers();
+  $("sizeHint").hidden = a.size !== "unknown";
   const left = QUESTIONS.filter(q => !a[q]).length;
   $("submitBtn").classList.toggle("waiting", left > 0);
   if (left === 0) $("formMsg").textContent = "";
@@ -180,6 +201,43 @@ function refreshForm() {
 
 form.addEventListener("change", refreshForm);
 form.addEventListener("click", () => setTimeout(refreshForm, 0));
+
+/* ---------- 휴대폰: 질문 하나씩 넘기기 ---------- */
+const stepMQ = window.matchMedia("(max-width: 640px)");
+const stepQuestions = Array.from(form.querySelectorAll(".question"));
+let quizStep = 0;
+
+function renderQuizStep() {
+  if (!stepMQ.matches) {
+    stepQuestions.forEach(q => q.style.display = "");
+    $("stepNav").hidden = true;
+    $("submitBtn").style.display = "";
+    return;
+  }
+  stepQuestions.forEach((q, i) => q.style.display = i === quizStep ? "" : "none");
+  $("stepNav").hidden = false;
+  $("stepCount").textContent = (quizStep + 1) + " / " + stepQuestions.length;
+  $("stepPrev").disabled = quizStep === 0;
+  const isLast = quizStep === stepQuestions.length - 1;
+  $("stepNext").style.display = isLast ? "none" : "";
+  $("submitBtn").style.display = isLast ? "" : "none";
+}
+$("stepPrev").addEventListener("click", () => {
+  quizStep = Math.max(0, quizStep - 1);
+  renderQuizStep();
+});
+$("stepNext").addEventListener("click", () => {
+  const q = stepQuestions[quizStep];
+  if (!q.querySelector("input:checked")) {
+    q.classList.add("missing");
+    return;
+  }
+  q.classList.remove("missing");
+  quizStep = Math.min(stepQuestions.length - 1, quizStep + 1);
+  renderQuizStep();
+});
+if (stepMQ.addEventListener) stepMQ.addEventListener("change", renderQuizStep);
+else if (stepMQ.addListener) stepMQ.addListener(renderQuizStep);
 
 /* 양식 제출은 미리보기 창 등에서 막힐 수 있어서 버튼 클릭으로 직접 처리해요 */
 form.addEventListener("submit", e => e.preventDefault());
@@ -268,3 +326,4 @@ document.querySelectorAll(".set-card").forEach(card => {
   showResult(a);
 })();
 refreshForm();
+renderQuizStep();

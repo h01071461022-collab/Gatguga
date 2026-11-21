@@ -79,11 +79,29 @@ function sceneSVG(kind, W, H, x0, cls) {
   return `<svg class="${cls || ""}" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${scene(kind, W, H, x0)}</svg>`;
 }
 
+/* 사진 파일(images/banner-1.jpg, images/set-fold.jpg 같은 이름)이 있으면 그 사진을,
+   없으면(지금처럼) 코드로 그린 그림을 보여줘요. 사진은 나중에 images 폴더에 넣기만 하면 돼요. */
+function usePhotoOrScene(url, onPhoto, onScene) {
+  const img = new Image();
+  img.onload = onPhoto;
+  img.onerror = onScene;
+  img.src = url;
+}
+
 // 배너 그림
-document.querySelectorAll(".slide").forEach(sl => {
-  sl.insertAdjacentHTML("afterbegin", sceneSVG(sl.dataset.scene, 1600, 640, 820, "scene") + '<div class="shade"></div>');
+document.querySelectorAll(".slide").forEach((sl, i) => {
+  const url = `images/banner-${i + 1}.jpg`;
+  usePhotoOrScene(url,
+    () => sl.insertAdjacentHTML("afterbegin", `<img class="scene" src="${url}" alt="">` + '<div class="shade"></div>'),
+    () => sl.insertAdjacentHTML("afterbegin", sceneSVG(sl.dataset.scene, 1600, 640, 820, "scene") + '<div class="shade"></div>')
+  );
 });
 // 세트 카드 그림
 document.querySelectorAll(".set-card").forEach(card => {
-  card.insertAdjacentHTML("afterbegin", sceneSVG(card.dataset.scene, 400, 300, 60));
+  const kind = card.dataset.scene;
+  const url = `images/set-${kind}.jpg`;
+  usePhotoOrScene(url,
+    () => card.insertAdjacentHTML("afterbegin", `<img src="${url}" alt="">`),
+    () => card.insertAdjacentHTML("afterbegin", sceneSVG(kind, 400, 300, 60))
+  );
 });

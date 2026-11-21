@@ -54,9 +54,16 @@ header { text-align: center; padding: 32px 0 24px; }
 .options label:hover { border-color: var(--accent); }
 .options label.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
 .question.missing { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.hint { margin: 10px 0 0; font-size: .85rem; color: var(--muted); }
 .form-msg { color: var(--accent); font-weight: 600; text-align: center; min-height: 1.4em; margin: 0 0 8px; }
 .btn.waiting { background: #c9bfb2; }
 .options input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* 휴대폰: 질문 하나씩 넘기기 */
+.step-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 16px; }
+.step-nav .btn { width: auto; padding: 12px 20px; }
+.step-nav .step-count { font-size: .9rem; color: var(--muted); font-weight: 600; }
+.step-nav .btn:disabled { opacity: .4; cursor: not-allowed; }
 
 .btn {
   display: block;
@@ -119,11 +126,14 @@ header { text-align: center; padding: 32px 0 24px; }
   width: 84px; height: 84px; flex-shrink: 0; border-radius: 10px;
   background: repeating-linear-gradient(45deg, #f1ece4, #f1ece4 6px, #ebe5db 6px, #ebe5db 12px);
   display: grid; place-items: center; font-size: .7rem; color: var(--muted); text-align: center;
+  object-fit: cover;
 }
 .badge { display: inline-block; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; background: var(--accent); color: #fff; }
 .pick h4 { margin: 4px 0 2px; font-size: 1.05rem; line-height: 1.35; }
 .pick .price { font-size: .9rem; color: var(--muted); }
 .price-warn { color: var(--warn); font-weight: 600; }
+.price-note { font-size: .72rem; color: var(--muted); }
+.pick .price-note { display: block; margin-top: 2px; }
 
 .because { margin: 12px 0 0; padding: 10px 12px; background: var(--accent-soft); border-radius: 10px; font-size: .9rem; }
 .because b { color: var(--accent); }
@@ -179,6 +189,7 @@ footer summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 @media (max-width: 420px) {
   .stat .value { font-size: 1rem; }
   .thumb { width: 68px; height: 68px; }
+  .alt a { padding: 12px 16px; }
 }
 
 /* ================= 홈 (쇼핑몰형 첫 화면) ================= */
@@ -194,7 +205,7 @@ footer summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 .hero-slider { position: relative; height: 480px; overflow: hidden; background: #e9e1d4; }
 .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .6s; display: flex; align-items: flex-end; }
 .slide.on { opacity: 1; }
-.slide svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.slide svg.scene, .slide img.scene { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .slide .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(30,24,18,.55) 0%, rgba(30,24,18,.15) 55%, rgba(30,24,18,0) 100%); }
 .slide-text { position: relative; max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 40px 64px; color: #fff; }
 .slide-text .kicker { font-size: .85rem; opacity: .85; margin: 0 0 10px; }
@@ -219,7 +230,7 @@ footer summary { cursor: pointer; font-weight: 600; color: var(--ink); }
 .sets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .set-card { display: flex; flex-direction: column; justify-content: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; font: inherit; color: inherit; transition: transform .2s, box-shadow .2s; }
 .set-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(43,38,32,.08); }
-.set-card svg { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; }
+.set-card svg, .set-card img { display: block; width: 100%; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
 .set-card .body { padding: 14px 16px 16px; }
 .set-card .who { font-size: .78rem; color: var(--accent); font-weight: 700; }
 .set-card h4 { margin: 2px 0 4px; font-size: 1.05rem; }
@@ -240,6 +251,8 @@ body.has-result #find { padding-top: 24px; }
   .slide-text h2 { font-size: 1.7rem; }
   .slide-text p { font-size: .98rem; }
   .slider-ctrl { right: 16px; bottom: 16px; }
+  .slider-ctrl button { width: 38px; height: 38px; font-size: 1.3rem; }
+  .nav-cta { padding: 12px 18px; }
   .sets { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .slide .shade { background: linear-gradient(0deg, rgba(30,24,18,.78) 0%, rgba(30,24,18,.45) 55%, rgba(30,24,18,.05) 100%); }
   .cats { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; gap: 14px; padding: 28px 20px 8px; scrollbar-width: none; }
