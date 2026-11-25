@@ -60,6 +60,15 @@ function priceMetaText(p) {
   return `${dateText(p.checkedAt)} 기준 · 실제 가격은 쿠팡에서 확인`;
 }
 
+/* 방문자 숫자 도구(GoatCounter)에 이벤트 기록. 도구가 없거나 막혀 있어도 사이트는 그대로 작동해요 */
+function track(path, title) {
+  try {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path, title, event: true });
+    }
+  } catch (err) { /* 무시 */ }
+}
+
 function slotHTML(cat, a, total) {
   const alloc = Math.round(total * BUDGET_SPLIT[a.use][cat.budgetKey] / 100);
   const head = `
@@ -251,10 +260,17 @@ $("submitBtn").addEventListener("click", () => {
     form.querySelector('input[name="' + missing[0] + '"]').closest(".question").scrollIntoView({ block: "center" });
     return;
   }
+  track("survey-complete", "설문 완료");
   showResult(a);
 });
 
 $("editBtn").addEventListener("click", showQuiz);
+
+/* 쿠팡 버튼(메인 "쿠팡에서 가격 보기" / 대안 "보기") 클릭 수 세기 */
+document.addEventListener("click", e => {
+  const el = e.target.closest(".go, .alt a");
+  if (el && !el.classList.contains("disabled")) track("coupang-click", "쿠팡 버튼 클릭");
+});
 
 /* ---------- 공유 ---------- */
 $("shareBtn").addEventListener("click", async () => {
@@ -302,6 +318,7 @@ document.querySelectorAll(".set-card").forEach(card => {
   card.addEventListener("click", () => {
     const a = {};
     card.dataset.preset.split("&").forEach(pair => { const kv = pair.split("="); a[kv[0]] = kv[1]; });
+    track("set-" + card.dataset.scene, "세트카드 클릭: " + card.dataset.scene);
     QUESTIONS.forEach(q => {
       const input = form.querySelector('input[name="' + q + '"][value="' + a[q] + '"]');
       if (input) input.checked = true;
