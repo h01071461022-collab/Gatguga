@@ -128,6 +128,20 @@ const PRODUCTS = [
     score: { use: { rest: 1 }, budget: { low: 1 } }
   },
   {
+    id: "takata-chair",
+    category: "의자",
+    name: "Takata 메쉬 사무용 의자 WY4 (학생용 공부 의자)",
+    role: "공부용",
+    price: 35900, priceNote: "", image: "",
+    why: "학생용 공부 의자로 나온 메쉬 의자예요. 조립이 쉽다는 평가가 많고, 리뷰도 3,500개 이상으로 많이 팔리고 있어요.",
+    flaw: "내구성이 아쉽다는 후기가 있어요.",
+    tags: ["메쉬", "학생용", "회색", "90x45x58"],
+    folding: false, easyMove: false,
+    link: "https://link.coupang.com/a/i2qh776swK",
+    checkedAt: "2026-11-28",
+    score: { use: { study: -2 } }
+  },
+  {
     id: "comet-drawer3",
     category: "수납장 / 서랍장",
     name: "코멧 슬림서랍장 (3단, 플라스틱)",
@@ -168,6 +182,62 @@ const PRODUCTS = [
     link: "https://link.coupang.com/a/i2pSzxbhaC",
     checkedAt: "2026-11-28",
     score: { use: { rest: 4 } }
+  },
+  {
+    id: "homeplanet-mood",
+    category: "조명",
+    name: "홈플래닛 충전식 LED 스탠드 무드등 (리모컨 세트)",
+    role: "충전식",
+    price: 9260, priceNote: "", image: "",
+    why: "충전식이라 콘센트 위치에 상관없이 쓸 수 있고, 리모컨으로 밝기를 조절할 수 있어요. 리뷰 3,200개 이상에 평점도 높은 편이에요.",
+    flaw: "스위치를 눌러도 바로 꺼지는 불량이 왔다거나, 반품 상품을 다시 보낸 듯한 포장으로 왔다는 후기가 있어요(1건 확인).",
+    tags: ["무드등", "충전식", "리모컨 포함", "화이트"],
+    folding: false, easyMove: true,
+    link: "https://link.coupang.com/a/i2p8W0RvQy",
+    checkedAt: "2026-11-28",
+    score: { budget: { low: 2 }, use: { rest: 1 } }
+  },
+  {
+    id: "kcy-moodlamp",
+    category: "조명",
+    name: "케이시조명 LED 밝기조절 패브릭 무드등 (내추럴 우드)",
+    role: "밝기조절형",
+    price: 14600, priceNote: "", image: "",
+    why: "패브릭 갓이라 빛이 부드럽게 퍼지고, 리모컨으로 밝기를 조절할 수 있어요.",
+    flaw: "갓이 흔들리고 설명서가 없다는 후기가 있어요.",
+    tags: ["무드등", "밝기조절", "리모컨 포함", "내추럴 우드"],
+    folding: false, easyMove: true,
+    link: "https://link.coupang.com/a/i2qcpqfTpY",
+    checkedAt: "2026-11-28",
+    score: { use: { rest: 1 } }
+  },
+  {
+    id: "unihome-hanger",
+    category: "행거",
+    name: "유니홈 28mm 이동식 옷걸이 행거",
+    role: "이동식",
+    price: 27800, priceNote: "", image: "",
+    why: "바퀴가 달려 있어서 옮기기 쉽고, 아래에 선반도 있어서 신발이나 가방을 둘 수 있어요. 리뷰 5,900개 이상, 평점도 높아서 많이 선택하는 행거예요.",
+    flaw: "겨울옷을 많이 걸면 휠 수 있다는 후기가 있어요. 무거운 옷은 나눠 거세요.",
+    tags: ["이동식", "바퀴", "120cm", "블랙"],
+    folding: false, easyMove: true,
+    link: "https://link.coupang.com/a/i2p0fJC61s",
+    checkedAt: "2026-11-28",
+    score: { move: { soon: 4 } }
+  },
+  {
+    id: "raonliving-hanger",
+    category: "행거",
+    name: "라온리빙 2단 와이드 행거 (천장 고정형)",
+    role: "천장 고정형",
+    price: 32890, priceNote: "쿠폰 적용가", image: "",
+    why: "천장에 단단히 고정하는 방식이라 흔들림 없이 오래 쓸 수 있고, 높이도 조절할 수 있어요. 견고하다는 평가가 많아요.",
+    flaw: "천장에 고정하는 방식이라 천장 높이를 먼저 확인하세요. 설치가 힘들다는 후기가 있어요.",
+    tags: ["천장 고정형", "32mm", "블랙", "높이 조절"],
+    folding: false, easyMove: false,
+    link: "https://link.coupang.com/a/i2p5NBWOUS",
+    checkedAt: "2026-11-28",
+    score: { move: { stay: 4 } }
   }
 ];
 
