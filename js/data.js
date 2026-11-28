@@ -37,10 +37,10 @@ const PRODUCTS = [
     price: 159440, priceNote: "와우 회원가", image: "",
     why: "리뷰 4,700개 이상, 만족 표시 4,000명 이상으로 자취생들이 많이 고르는 메모리폼 매트리스예요.",
     flaw: "옵션(사이즈)별 할인율이 달라 가격이 자주 바뀌어요. 구매 전 최신 가격을 꼭 확인하세요.",
-    tags: ["메모리폼"],
+    tags: ["메모리폼", "슈퍼싱글", "15cm", "화이트"],
     folding: false, easyMove: false,
-    link: "",
-    checkedAt: "2026-11-19",
+    link: "https://link.coupang.com/a/i2pjrakjJs",
+    checkedAt: "2026-11-28",
     score: { move: { stay: 3 }, budget: { low: 1, mid: 2 } }
   },
   {
@@ -51,10 +51,10 @@ const PRODUCTS = [
     price: 333900, priceNote: "", image: "",
     why: "푹신한 유로탑 타입이라 편안하게 쉬고 싶은 사람에게 어울려요.",
     flaw: "쿠팡 로켓배송이 아닌 판매자(RNC Korea) 상품이라 반품비가 4만 원이에요. 사이즈를 꼭 확인하고 사세요.",
-    tags: ["유로탑", "롤팩 배송"],
+    tags: ["유로탑", "롤팩 배송", "슈퍼싱글", "27cm"],
     folding: false, easyMove: false,
-    link: "",
-    checkedAt: "2026-11-19",
+    link: "https://link.coupang.com/a/i2plQpSNCm",
+    checkedAt: "2026-11-28",
     score: { move: { stay: 2, soon: -3 }, budget: { mid: 1, high: 3 }, use: { rest: 2 } }
   },
   {
@@ -65,10 +65,10 @@ const PRODUCTS = [
     price: 129000, priceNote: "", image: "",
     why: "분리형 토퍼와 커버가 포함돼 있고, 한 달에 100명 이상이 구매하는 인기 상품이에요.",
     flaw: "",
-    tags: ["분리형 토퍼", "커버 포함"],
+    tags: ["분리형 토퍼", "커버 포함", "슈퍼싱글", "12cm", "네이비"],
     folding: false, easyMove: true,
-    link: "",
-    checkedAt: "2026-11-19",
+    link: "https://link.coupang.com/a/i2poHOWfiC",
+    checkedAt: "2026-11-28",
     score: { budget: { low: 2 }, size: { s: 1 }, move: { soon: 1 } }
   },
   {
@@ -79,10 +79,10 @@ const PRODUCTS = [
     price: 143040, priceNote: "", image: "",
     why: "3단으로 접을 수 있어서 이사할 때 들고 가기 쉬워요. 국내에서 만든 제품이에요.",
     flaw: "두께가 15cm라 접었을 때 부피가 크고 조금 무거울 수 있어요. 재고가 얼마 남지 않았다는 안내가 있으니 품절 전에 확인하세요.",
-    tags: [],
+    tags: ["슈퍼싱글", "15cm", "그레이"],
     folding: true, easyMove: true,
-    link: "",
-    checkedAt: "2026-11-19",
+    link: "https://link.coupang.com/a/i2pqAns6o0",
+    checkedAt: "2026-11-28",
     score: { move: { soon: 4 }, size: { s: 2 } }
   },
   {
@@ -93,10 +93,10 @@ const PRODUCTS = [
     price: 27610, priceNote: "", image: "",
     why: "리뷰 28,000개 이상, 만족 표시 2만 명 이상으로 많이 팔리는 철제 프레임 책상이에요. 가로 120cm라 모니터와 책을 같이 올려두기 좋아요.",
     flaw: "가로가 120cm라 4평 이하 좁은 방엔 커 보일 수 있어요. 조립은 직접 해야 해요.",
-    tags: ["철제 프레임", "120cm"],
+    tags: ["철제 프레임", "120cm", "블랙"],
     folding: false, easyMove: false,
-    link: "",
-    checkedAt: "2026-11-21",
+    link: "https://link.coupang.com/a/i2pwEqjJ7Y",
+    checkedAt: "2026-11-28",
     score: { use: { study: 4 }, move: { soon: -2 } }
   },
   {
@@ -107,10 +107,10 @@ const PRODUCTS = [
     price: 23950, priceNote: "쿠폰 적용가", image: "",
     why: "다리가 접혀서 이사할 때 부피를 줄일 수 있는 책상이에요. 리뷰 4,400개 이상으로 꾸준히 팔리고 있어요.",
     flaw: "다리 부분에 긁힘이나 녹이 보인다는 리뷰가 가끔 있어요. 받으면 먼저 확인하세요.",
-    tags: ["접이식", "80cm"],
+    tags: ["접이식", "80cm", "라이트월넛블랙"],
     folding: true, easyMove: true,
-    link: "",
-    checkedAt: "2026-11-21",
+    link: "https://link.coupang.com/a/i2pz8VXVtc",
+    checkedAt: "2026-11-28",
     score: { move: { soon: 4 }, size: { s: 2 } }
   },
   {
@@ -118,13 +118,13 @@ const PRODUCTS = [
     category: "의자",
     name: "New World 메쉬 사무용 의자",
     role: "기본형",
-    price: 29000, priceNote: "", image: "",
+    price: 28700, priceNote: "할인가 · 12월 2일까지", image: "",
     why: "메쉬 등받이와 팔걸이가 있는 기본형 사무용 의자예요. 조립이 어렵지 않다는 평가가 많아요.",
     flaw: "가끔 흠집이 있는 상품이 온다는 리뷰가 있어요(2건 확인). 받으면 바로 확인하세요. 높이 조절과 바퀴는 없어요.",
-    tags: ["메쉬", "고정 다리"],
+    tags: ["메쉬", "고정 다리", "블랙"],
     folding: false, easyMove: false,
-    link: "",
-    checkedAt: "2026-11-21",
+    link: "https://link.coupang.com/a/i2pLPaZWfc",
+    checkedAt: "2026-11-28",
     score: { use: { rest: 1 }, budget: { low: 1 } }
   },
   {
@@ -135,10 +135,10 @@ const PRODUCTS = [
     price: 13970, priceNote: "", image: "",
     why: "리뷰 24,000개 이상, 만족 표시 2만 명 이상인 슬림 플라스틱 서랍장이에요. 가볍고 좁은 자리에도 들어가요(31×40×59.9cm).",
     flaw: "5단 투명 옵션에서는 깨짐·내구성 불만이 있었어요. 지금 추천하는 3단 기본형은 다른 옵션이에요.",
-    tags: ["플라스틱", "3단", "가벼움"],
+    tags: ["플라스틱", "3단", "가벼움", "화이트"],
     folding: false, easyMove: true,
-    link: "",
-    checkedAt: "2026-11-21",
+    link: "https://link.coupang.com/a/i2pOFzcsgK",
+    checkedAt: "2026-11-28",
     score: { move: { soon: 4 }, budget: { low: 2 } }
   },
   {
@@ -149,10 +149,10 @@ const PRODUCTS = [
     price: 18990, priceNote: "", image: "",
     why: "목이 휘어지는 자바라형이라 책상 조명으로 쓰기 좋아요. 전구가 포함돼 있고 리뷰 4,800개 이상에 평점도 높아요.",
     flaw: "가끔 전구가 빠진 채로 오는 경우가 있어요(1건 확인). 받으면 전구가 들어있는지 먼저 확인하세요.",
-    tags: ["장스탠드", "전구 포함"],
+    tags: ["장스탠드", "전구 포함", "화이트"],
     folding: false, easyMove: true,
-    link: "",
-    checkedAt: "2026-11-21",
+    link: "https://link.coupang.com/a/i2pQNxfWCq",
+    checkedAt: "2026-11-28",
     score: { use: { study: 4 } }
   },
   {
@@ -163,10 +163,10 @@ const PRODUCTS = [
     price: 24990, priceNote: "", image: "",
     why: "천으로 된 갓이라 빛이 은은하게 퍼져요. 전구(LED)가 포함돼 있고 평점이 높은 편이에요.",
     flaw: "바닥 받침이 찌그러지거나 부품이 빠진 채로 오는 경우가 있어요(각 1건 확인). 밝기 조절 리모컨은 없고 코드로 켜고 꺼요.",
-    tags: ["무드등", "전구 포함"],
+    tags: ["무드등", "전구 포함", "화이트"],
     folding: false, easyMove: true,
-    link: "",
-    checkedAt: "2026-11-21",
+    link: "https://link.coupang.com/a/i2pSzxbhaC",
+    checkedAt: "2026-11-28",
     score: { use: { rest: 4 } }
   }
 ];
